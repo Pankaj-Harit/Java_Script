@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+
+.Box{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom,#fffa65,#fff200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#demo{
+    color: #b71540;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: 20px 40px;
+    
+    border-radius: 50px;
+    
+    box-shadow: 1px 1px 2px 5px #000;
+}
+    </style>
+    <title>Timer</title>
+</head>
+<body>
+
+    <div class="Box">
+        
+      <p id="demo"></p>
+
+    </div>
+    
+
+    <script>
+        
+
+    var x = setInterval( function countdown() {
+
+        var today = new Date().getTime();
+        var event = new Date(2020,11,25,24,59,59).getTime();
+
+        var remTime = event - today;
+
+        var d = Math.floor(remTime / (1000 * 60 * 60 * 24));
+        var h = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((remTime % (1000 * 60)) / 1000);
+
+        document.getElementById("demo").innerHTML = 
+        d+"D " +h+"H "+m+"M "+s+"S";
+        
+            if(remTime<0){
+                clearInterval(x);
+                window.alert("Happy Chrismas Day!")
+            }
+        
+    },1000);
+ 
+
+
+    </script>
+</body>
+</html>
