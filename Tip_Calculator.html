@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body{ 
+        height: 100vh;
+        width: 100%;
+        background: linear-gradient(to left, #8E0E00, #1F1C18);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .Calculator{
+            
+            height: 450px;
+            background-color: #fff;
+            border-radius: 40px;
+        }
+
+        h2{
+            margin: 0;
+            padding: 5px 5px;
+            background-color: #1F030C;
+            color: #fff; 
+            text-align: center; 
+            border-top-left-radius: 40px; 
+            border-top-right-radius: 40px; 
+        }
+        .Calculator >p{
+            margin-left: 10px;
+            font-weight: 700;
+            }
+
+
+        #money{height: 30px;}
+
+        #money,#people:focus{
+
+            color:red;
+            outline-color:#2980b9;
+        }
+
+        #service{
+            margin-left: 30px;
+            padding: 10px 20px;
+        }
+
+        #people{ height: 30px;
+            margin-left: 20px;
+        }
+
+        button{
+            text-transform: uppercase;
+            margin: 10px 10px 10px 60px;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #AD133A;
+            outline: none;  
+        }
+
+        button:hover{
+            color: #fff;
+            background-color: #4c2827;
+        }
+
+        .tip >p{
+            text-align: center;
+            font-size: 30px;
+            margin:0px;
+        }
+
+        #each{
+            font-size: 20px;
+            font-weight: bold;
+            display: none;
+            padding-top: 0px;
+        }
+     </style>
+
+    <title>Tip Calculator</title>
+
+</head>
+<body>
+        <div class="Calculator">
+            <div >
+             <h2>Tip Calculator</h2>
+             </div>
+
+        <p>How much was your bill?</p>
+            <div class="bAmount"></div>
+                    <label for="amount">$</label>
+                    <input type="number" id="money" placeholder="Enter Amount">
+              
+
+        <p>How was your service?</p>
+            <select id="service">
+                <option disabled selected value="0">--Choose an Option--</option>
+                <option value="0.3">30% - Outstanding</option>
+                <option value="0.2">20% - Good</option>
+                <option value="0.15">15% - it was Ok</option>
+                <option value="0.1">10% - Bad</option>
+                <option value="0.05">5% - Terible</option>
+            </select>
+            <p>How many People are sharing the bill?</p>
+            <div>
+
+                <input type="number" id="people" placeholder="Number of People">
+                <label for="people">people</label>
+            </div>
+            <button onclick="tipCal()">Calculate</button>
+            <div class="tip">
+                <p id="result"></p>
+                <p id="each">each</p>
+            </div>
+        </div> 
+    
+    <script>
+     
+        function tipCal (){
+
+            var billAmount =document.getElementById("money").value;
+            var billService =document.getElementById("service").value;
+            var nOfPeople =document.getElementById("people").value;
+
+            if(billAmount == ""|| billService == 0){
+            window.alert("Please Fill the values");
+            }
+
+            if(nOfPeople == ""||nOfPeople == "1"){
+                nOfPeople=1
+                document.getElementById("each").style.display = "none";
+            }else {
+            document.getElementById("each").style.display = "block";
+            }
+            //Calculation 
+
+            var total = (billAmount * billService) / nOfPeople;
+
+            total = total.toFixed(2);
+            document.getElementById("result").innerHTML = "$ "+total;
+            }
+     
+ </script>   
+
+</body>
+</html>
